@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n\tconst sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))\n\tconst textToWrite = \"oh. shoot. well, hmm.\"\n\tlet text = ''\n\tlet cursor = '❚'\n\n\tconst loop = async () => {\n    let blink = () => cursor = cursor === ' ' ? '❚' : ' '\n\t\twhile (1) {\n      if (text === textToWrite){\n        setInterval(blink, 400)\n        return\n      } else if (text.charAt(text.length - 1) === '.'){\n        let cursorInterval = setInterval(blink, 400)\n        await sleep(1000)\n        clearInterval(cursorInterval)\n        cursor = '❚'\n      }\n\n      text = text + textToWrite.charAt(text.length)\n\n\t\t\tawait sleep((Math.random() * 100) + 20)\n\t\t}\n\t}\n\n\tloop()\n\n</script>\n\n<main>\n\t<p class='text-writer'>{text}{cursor}</p>\n</main>\n\n<style>\n\tmain {\n\t\ttext-align: left;\n\t\tfont-family: 'Courier New', Courier, monospace;\n\t\tpadding: 1em;\n\t\tmax-width: 240px;\n\t\tmargin: 0 auto;\n    user-select: none;\n\t}\n\n  .text-writer {\n    height: 10rem;\n    line-height: 1.5\n  }\n\n\t@media (min-width: 640px) {\n\t\tmain {\n\t\t\tmax-width: none;\n\t\t}\n\t}\n</style>"
+  ],
+  "names": [],
+  "mappings": "AAkCC,IAAI,eAAC,CAAC,AACL,UAAU,CAAE,IAAI,CAChB,WAAW,CAAE,aAAa,CAAC,CAAC,OAAO,CAAC,CAAC,SAAS,CAC9C,OAAO,CAAE,GAAG,CACZ,SAAS,CAAE,KAAK,CAChB,MAAM,CAAE,CAAC,CAAC,IAAI,CACZ,WAAW,CAAE,IAAI,AACpB,CAAC,AAEA,YAAY,eAAC,CAAC,AACZ,MAAM,CAAE,KAAK,CACb,WAAW,CAAE,GAAG;EAClB,CAAC,AAEF,MAAM,AAAC,YAAY,KAAK,CAAC,AAAC,CAAC,AAC1B,IAAI,eAAC,CAAC,AACL,SAAS,CAAE,IAAI,AAChB,CAAC,AACF,CAAC"
+}
